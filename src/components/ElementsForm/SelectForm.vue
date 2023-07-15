@@ -2,7 +2,8 @@
   <div>
     <label>{{ label }}</label>
     <select>
-      <option v-for="option of options" :key="option.id">{{option}}</option>
+      <option v-for="option of options" :key="option.id">
+        {{option}}</option>
     </select>
   </div>
 </template>
