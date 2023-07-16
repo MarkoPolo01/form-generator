@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>{{ label }}</label>
-    <input v-bind="$attrs"  />
+    <input/>
   </div>
 </template>
 
@@ -9,7 +9,6 @@
 export default {
   props: {
     label: String,
-    value: String
   }
 };
 </script>

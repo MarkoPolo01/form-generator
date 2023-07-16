@@ -1,15 +1,18 @@
 <template>
   <div>
-    <form>
+    <form class="form_elem">
       <InputForm v-for="input in forma.formInputs" :key="input.id" :label="input.label" />
       <SelectForm v-for="select in forma.formSelects" :key="select.id" :label="select.label"
                   :options="select.options"/>
       <CheckboxForm v-for="checkbox in forma.formCheckboxes" :key="checkbox.id" :label="checkbox.label"
-                   />
+      />
       <TextareaForm v-for="textarea in forma.formTextareas" :key="textarea.id" :label="textarea.label"
-                   />
-      <button @click="saveForm">Сохранить</button>
-      <Button @click="cancelForm">Отменить</button>
+      />
+      <div class="form_elem_block_button">
+        <button @click="saveForm">Сохранить</button>
+        <button @click="cancelForm">Очистить</button>
+        <button @click="removeForm">Удалить</button>
+      </div>
     </form>
   </div>
 </template>
@@ -27,21 +30,25 @@ export default {
     forma: Object
   },
   data() {
-    return {};
+    return {
+      formValues: {}
+    };
   },
   methods: {
     saveForm() {
       // Отправка формы на сервер или обработка данных
-      console.log('Form values:', this.formValues);
+      alert('Вот такая запись полетела в бд', this.formValues);
     },
     cancelForm() {
-      // Очистка значений формы
       this.formValues = {};
+    },
+    removeForm() {
+
     }
   }
 };
 </script>
 
-<style scoped>
-/* Стили для компонента FormGenerator */
+<style scoped lang="scss">
+@import "FormaElem";
 </style>

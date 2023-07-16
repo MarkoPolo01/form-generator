@@ -1,6 +1,8 @@
 <template>
   <div class="home_form">
-    <FormaGenerator/>
+    <h1>Генератор Форм</h1>
+    <FormaGenerator class="home_form_forma_generator"/>
+    <h1>Список Форм</h1>
     <FormaList class="home_form_list"/>
   </div>
 </template>
@@ -15,6 +17,6 @@ export default {
   }
 }
 </script>
-<style>
-
+<style scoped lang="scss">
+@import "HomeView";
 </style>

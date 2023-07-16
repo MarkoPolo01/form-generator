@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="da">
     <div v-for="item in forms" :key="item.id">
       <FormElem
           :forma="item"
@@ -42,6 +42,5 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Стили для компонента FormGenerator */
+<style scoped lang="scss">
 </style>

@@ -9,7 +9,6 @@
 export default {
   props: {
     label: String,
-    value: String
   }
 };
 </script>
