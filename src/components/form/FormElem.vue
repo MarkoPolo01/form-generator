@@ -1,17 +1,39 @@
 <template>
   <div>
     <form class="form_elem">
-      <InputForm v-for="input in forma.formInputs" :key="input.id" :label="input.label" />
-      <SelectForm v-for="select in forma.formSelects" :key="select.id" :label="select.label"
-                  :options="select.options"/>
-      <CheckboxForm v-for="checkbox in forma.formCheckboxes" :key="checkbox.id" :label="checkbox.label"
+      <InputForm
+          v-for="input in forma.formInputs"
+          :key="input.id"
+          :label="input.label"
+          :value="formValues[input.id]"
+          @input="eventEntry"
+          :inputId="input.id"
       />
-      <TextareaForm v-for="textarea in forma.formTextareas" :key="textarea.id" :label="textarea.label"
+      <SelectForm
+          v-for="select in forma.formSelects"
+          :key="select.id"
+          :label="select.label"
+          :options="select.options"
+          @input="eventEntry"
+          :inputId="select.id"
+      />
+      <CheckboxForm
+          v-for="checkbox in forma.formCheckboxes"
+          :key="checkbox.id"
+          :label="checkbox.label"
+          :checked="formValues[checkbox.id]"
+          @input="eventEntry"
+          :inputId="checkbox.id"
+      />
+      <TextareaForm v-for="textarea in forma.formTextareas"
+                    :key="textarea.id"
+                    :label="textarea.label"
+                    :value="formValues[textarea.id]"
+                    @textarea="eventEntry"
+                    :textareaId="textarea.id"
       />
       <div class="form_elem_block_button">
         <button @click="saveForm">Сохранить</button>
-        <button @click="cancelForm">Очистить</button>
-        <button @click="removeForm">Удалить</button>
       </div>
     </form>
   </div>
@@ -31,22 +53,27 @@ export default {
   },
   data() {
     return {
-      formValues: {}
+      formValues: {
+        id: Math.floor(Math.random() * 10000000)
+      }
     };
   },
   methods: {
     saveForm() {
-      // Отправка формы на сервер или обработка данных
-      alert('Вот такая запись полетела в бд', this.formValues);
+      alert('Запись улетела в бд структуру можно посмотреть в консоле')
+      console.log(this.formValues);
     },
-    cancelForm() {
-      this.formValues = {};
-    },
-    removeForm() {
 
-    }
+
+    eventEntry(label, inputValue) {
+      this.formValues = {
+        ...this.formValues,
+        [label]: inputValue,
+      };
+    },
+
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

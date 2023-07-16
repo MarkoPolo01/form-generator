@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>{{ label }}</label>
-    <input/>
+    <input type="text" :value="value" @input="handleInput" />
   </div>
 </template>
 
@@ -9,10 +9,13 @@
 export default {
   props: {
     label: String,
-  }
+    value: String,
+    inputId: Number,
+  },
+  methods: {
+    handleInput(event) {
+      this.$emit("input", this.label, event.target.value);
+    },
+  },
 };
 </script>
-
-<style scoped>
-/* Стили для компонента Input */
-</style>
